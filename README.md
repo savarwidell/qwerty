@@ -4,7 +4,7 @@
 
 ### Un repositorio para pasarnos cosas alv
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&pause=1000&color=00F7FF&center=true&vCenter=true&width=700&lines=Bienvenidos+al+repositorio;Aqui+compartimos+codigo;Trabajos%2C+tareas+y+proyectos;Aprendemos+juntos;Y+nos+ayudamos+entre+todos" alt="Typing SVG" />
+<img src="imagenes/chaman.jpeg" alt="Typing SVG" />
 
 <br>
 
