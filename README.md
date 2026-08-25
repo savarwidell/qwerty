@@ -48,11 +48,11 @@ La idea es sencilla:
 
 | Integrante | Rol | Área |
 |---|---|---|
-| Valentín | Overtwach | Desarrollo |
-| Compita 2 | Developer | Web |
-| Compita 3 | Developer | Python |
-| Compita 4 | Developer | Diseño |
-| Compita 5 | Developer | JavaScript |
+| Valentín | Overtwach | Java |
+| Ale | LOL | Todo ALV |
+| Aldo | Agarrar chiles | psint |
+| Nico | Juego 1234 | Java |
+| Verni | Lol | Proteus |
 
 ---
 
