@@ -1,7 +1,7 @@
 /*
 Hace que se use el 100% del CPU calentando la PC/Laptop.
 
-savar widell
+Savar Widell
 */
 
 

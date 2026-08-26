@@ -1,0 +1,598 @@
+### CONCEPTOS FUNDAMENTALES
+¿Qué es un lenguaje de programación?
+Es un sistema formal para expresar algoritmos y convertir la intención humana en instrucciones ejecutables por una máquina. Es el puente entre la lógica humana y la ejecución binaria.
+
+Niveles de los lenguajes de programación
+Máquina (1GL): Bits y códigos de operación específicos del procesador. Control máximo. Portabilidad muy baja. Productividad muy baja.
+Ensamblador (2GL): Mnemónicos cercanos a registros y memoria. Control muy alto. Portabilidad baja/media. Productividad baja.
+Alto nivel (3GL+): Abstracciones como tipos, funciones, módulos, clases. Control variable. Portabilidad media/alta. Productividad alta.
+
+Elementos fundamentales de un lenguaje
+Sintaxis: Conjunto de reglas estructurales que dictan cómo se combinan los símbolos para formar programas válidos.
+Semántica: Define lo que el código significa y cómo se ejecuta.
+Sistema de tipos: Clasifica y verifica los datos.
+Paradigmas: Estilos o enfoques para estructurar la lógica.
+
+### HISTORIA Y EVOLUCIÓN
+Cronología de hitos importantes
+1943-45: Plankalkül por Konrad Zuse. Primer antecedente de lenguaje algorítmico de alto nivel.
+1949: EDSAC por Maurice Wilkes (Cambridge). Primer computador de programa almacenado de tamaño completo.
+1949-51: Initial Orders por David Wheeler. Primer sistema de traducción de comandos a binario en EDSAC.
+1957: FORTRAN por John Backus y equipo IBM. Primer lenguaje de alto nivel ampliamente usado para cálculo científico.
+1958: LISP por John McCarthy. Procesamiento simbólico y programación funcional.
+1959: COBOL por Grace Hopper y CODASYL. Lenguaje de negocios con sintaxis cercana al inglés.
+1960: ALGOL 60 por Comité internacional. Bloques, alcance léxico y notación algorítmica.
+1964: BASIC por John Kemeny y Thomas Kurtz. Lenguaje educativo e interactivo.
+1965: Simula por Ole-Johan Dahl y Kristen Nygaard. Introdujo conceptos de orientación a objetos.
+1971: Pascal por Niklaus Wirth. Enseñanza de programación estructurada.
+1972: C por Dennis Ritchie (Bell Labs). Lenguaje de sistemas, base de Unix.
+1980s: C++ por Bjarne Stroustrup. Extensión de C con orientación a objetos.
+1990: FORTRAN 90 por ANSI. Nuevas características: arrays, módulos, programación estructurada.
+1991: Python por Guido van Rossum. Productividad y sintaxis clara.
+1995: Java por James Gosling (Sun). Portabilidad mediante JVM y bytecode.
+1995: JavaScript por Brendan Eich. Programación en el navegador.
+1995: FORTRAN 95 por ISO/IEC. Revisión con programación paralela.
+2003: FORTRAN 2003 por ISO/IEC. POO, manejo de excepciones, interoperabilidad con C.
+2009: Go por Google (Rob Pike, Ken Thompson). Concurrencia simple.
+2010: Rust por Mozilla (Graydon Hoare). Seguridad de memoria sin garbage collector.
+2012: TypeScript por Microsoft (Anders Hejlsberg). Tipos estáticos opcionales para JavaScript.
+
+Personajes clave
+John Backus: Padre de FORTRAN, primer compilador optimizante.
+Grace Hopper: Compiladores, COBOL, lenguaje cercano al inglés.
+Dennis Ritchie: Creador del lenguaje C y co-creador de Unix.
+Ken Thompson: Creador de Unix, lenguaje B.
+Konrad Zuse: Plankalkül, primer lenguaje algorítmico.
+David Wheeler: Initial Orders en EDSAC, subrutinas.
+Niklaus Wirth: Pascal, programación estructurada.
+Bjarne Stroustrup: C++.
+Guido van Rossum: Python.
+James Gosling: Java.
+
+### FORTRAN
+Historia
+1954: IBM comienza el desarrollo.
+1957: Publicación comercial, primer compilador optimizante.
+1966: FORTRAN 66 (primer estándar ANSI).
+1977: FORTRAN 77 (estándar más usado).
+1990: FORTRAN 90 (formato libre, arrays, módulos).
+1995: FORTRAN 95 (programación paralela, FORALL).
+2003: FORTRAN 2003 (POO, interoperabilidad con C).
+
+Características principales
+Primer lenguaje de alto nivel.
+Diseñado para cálculo científico y numérico.
+Notación cercana a fórmulas matemáticas.
+Optimizado para rendimiento.
+Lenguaje predominante en aplicaciones matemáticas, científicas e ingeniería.
+Amplias librerías: IMSL, NAG (Numerical Algorithms Group).
+
+Importancia
+"Las noticias de la muerte de FORTRAN han sido enormemente exageradas" - sigue vigente en computación de alto rendimiento.
+Código escrito en versiones antiguas sigue compilando en versiones nuevas (retrocompatibilidad).
+
+### LENGUAJE ENSAMBLADOR
+Definición
+Lenguaje de bajo nivel que representa instrucciones de la CPU mediante mnemónicos (MOV, ADD, SUB, CMP, JMP) en lugar de secuencias binarias.
+
+Elementos fundamentales
+Mnemónico: Representa una operación de la CPU.
+Registro: Almacenamiento pequeño y rápido dentro del procesador (EAX, EBX, ECX, EDX).
+Memoria: Datos e instrucciones identificados por direcciones.
+Etiqueta: Nombre simbólico para una dirección.
+Directiva: Instrucción para el ensamblador (.DATA, .CODE).
+
+Características
+No existe un único ensamblador universal, cada arquitectura tiene el suyo.
+Control preciso sobre registros, memoria e interrupciones.
+Muy dependiente de la arquitectura.
+Difícil de leer y mantener.
+Relación casi 1:1 entre instrucción simbólica y código máquina.
+
+Proceso de ensamblado (dos pasadas)
+Primera pasada: Analiza líneas, identifica etiquetas, construye tabla de símbolos.
+Segunda pasada: Traduce mnemónicos a códigos de operación, sustituye etiquetas por direcciones, genera archivo objeto.
+
+Aplicaciones actuales
+Firmware, sistemas embebidos, drivers, kernels de sistemas operativos, seguridad e ingeniería inversa, secciones críticas de rendimiento.
+
+### LENGUAJE C
+Historia
+Nace en Bell Labs entre 1969-1973.
+Dennis Ritchie es el creador principal (alrededor de 1972).
+Evolución: BCPL (Martin Richards, mediados 1960) → B (Ken Thompson, finales 1960) → C (Dennis Ritchie).
+
+Propósito
+Construir Unix de forma eficiente y portable.
+Equilibrio entre abstracción (funciones, tipos) y control (punteros, memoria).
+"C no eliminó la importancia de FORTRAN: desplazó el centro de atención hacia sistemas operativos, compiladores y software portable".
+
+Características distintivas
+Punteros: Almacenan direcciones de memoria.
+Control cercano al hardware.
+Portabilidad: mismo código recompilado en distintas arquitecturas.
+Base de muchos lenguajes posteriores: C++, Java, C#, JavaScript.
+
+Elementos del código C
+Preprocesador (#include).
+Funciones: unidad básica de organización.
+Bloques: delimitados por llaves {}.
+Sentencias: terminan con punto y coma.
+Tipos: int, char, float, etc.
+Arreglos y punteros.
+
+### LENGUAJES ESTRUCTURADOS VS NO ESTRUCTURADOS
+Programación estructurada
+Organiza el algoritmo mediante bloques con entrada y salida claras.
+Tres construcciones fundamentales: Secuencia (instrucciones en orden), Selección (if/else, switch), Iteración (for, while).
+Ventajas: Flujo visible y predecible, fácil de leer/probar/mantener, cambios localizados, promueve funciones, procedimientos, módulos.
+Lenguajes asociados: ALGOL, Pascal, C, Ada, Modula-2.
+
+Programación no estructurada
+Organiza la ejecución mediante saltos explícitos (GOTO) que transfieren el control a puntos distantes.
+Características: Código "espagueti", dependencias ocultas, mayor riesgo de efectos colaterales, mantenimiento costoso.
+Contexto histórico: Común en BASIC, FORTRAN temprano y ensamblador.
+
+### PARADIGMAS DE PROGRAMACIÓN
+Imperativo: ¿Qué pasos debe ejecutar la máquina? Ejemplos: C, Python, Go.
+Orientado a objetos: ¿Qué entidades colaboran? Ejemplos: Java, C#, Kotlin.
+Funcional: ¿Qué transformación expresa el resultado? Ejemplos: Haskell, Elixir, F#.
+Lógico/Declarativo: ¿Qué condiciones deben cumplirse? Ejemplos: Prolog, SQL.
+La mayoría de los lenguajes modernos son multiparadigma.
+
+### CLASIFICACIÓN DE LENGUAJES POR TIPO DE TIPADO
+Estático vs Dinámico
+Estático: Los tipos se comprueban en compilación. Detecta errores antes de ejecución. (Java, C++, Rust).
+Dinámico: La comprobación ocurre durante la ejecución. Mayor flexibilidad. (Python, JavaScript).
+
+Fuerte vs Débil
+Fuerte: No permite operaciones entre tipos incompatibles sin conversión explícita.
+Débil: Permite conversiones implícitas (coerción).
+
+### TIPOS DE EJECUCIÓN
+Compilación (AOT): Traduce antes de ejecutar. Máximo rendimiento. Ejemplos: C, C++, Rust.
+Interpretación: Ejecuta línea por línea. Mayor flexibilidad. Ejemplos: Python, Ruby.
+Bytecode + VM: Compila a bytecode intermedio. Equilibrio. Ejemplos: Java (JVM), C# (CLR).
+Compilación JIT: Compila durante la ejecución. Combina portabilidad y rendimiento. Ejemplos: Java, C#.
+
+### ELEMENTOS DE DISEÑO DE LENGUAJES
+Fases de diseño
+Definición de objetivos y caso de uso.
+Definición de sintaxis formal (BNF, EBNF).
+Diseño del sistema de tipos.
+Arquitectura del compilador/intérprete.
+Diseño de la biblioteca estándar.
+Documentación, herramientas y comunidad.
+
+Trade-offs fundamentales
+Rendimiento ↔ Abstracción y seguridad.
+Simplicidad ↔ Poder expresivo.
+Seguridad de memoria ↔ Control de bajo nivel.
+Tipado estático ↔ Flexibilidad.
+Inmutabilidad ↔ Eficiencia de memoria.
+
+Gestión de memoria
+Manual: C requiere gestión explícita.
+Automática: Garbage Collector (Java, Python, C#).
+Segura sin GC: Ownership model (Rust).
+
+### PASCAL
+Historia
+Creado por Niklaus Wirth en 1971.
+Diseñado para enseñar programación estructurada.
+Reforzó el diseño disciplinado y la claridad.
+
+Características
+Lenguaje educativo.
+Programación estructurada.
+Tipos de datos: enteros (Integer, Word, Byte, LongInt), reales (Real, Single, Double, Extended), carácter (Char), lógico (Boolean), cadena (String).
+Arrays y registros.
+Procedimientos y funciones.
+Archivos y acceso secuencial/directo.
+
+### CONCEPTOS ADICIONALES IMPORTANTES
+Ley de Moore
+No aparece explícitamente en los PDFs pero contextualiza la evolución.
+
+Abstracción
+Proceso de alejar al programador de los detalles del hardware.
+Permite mayor productividad y portabilidad.
+No elimina el hardware: organiza la forma de controlarlo.
+
+Compilador
+Convierte una descripción de alto nivel en secuencia ejecutable.
+Fases: análisis léxico → sintáctico → semántico → representación intermedia → optimización → código y enlace.
+
+Portabilidad
+Capacidad de un programa de funcionar en diferentes arquitecturas.
+FORTRAN: estandarizado, portable.
+C: recompilación en distintas arquitecturas.
+Java: "write once, run anywhere" (JVM).
+
+### PREGUNTAS FRECUENTES DE EXAMEN
+Fechas clave (MEMORIZAR)
+1957 → FORTRAN.
+1972 → C.
+1990 → FORTRAN 90.
+1949 → EDSAC.
+1971 → Pascal.
+1991 → Python.
+1995 → Java.
+
+Creadores (MEMORIZAR)
+FORTRAN → John Backus.
+C → Dennis Ritchie.
+Pascal → Niklaus Wirth.
+Python → Guido van Rossum.
+Java → James Gosling.
+COBOL → Grace Hopper.
+C++ → Bjarne Stroustrup.
+
+Comparaciones importantes
+FORTRAN vs C: FORTRAN para cálculo científico, C para sistemas.
+Estructurado vs no estructurado: Control visible vs saltos dispersos.
+Bajo nivel vs alto nivel: Control vs productividad.
+Estático vs dinámico: Compilación vs ejecución.
+
+Conceptos que debes poder definir
+Sintaxis vs Semántica.
+Paradigma de programación.
+Lenguaje de alto nivel vs bajo nivel.
+Compilador vs Intérprete.
+Tipado estático vs dinámico.
+Programación estructurada.
+
+### SINTAXIS DE LENGUAJE C
+Comentarios
+// Comentario de una línea
+/* Comentario multilínea */
+
+Directivas de preprocesador
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+Función principal
+int main() {
+    // Código aquí
+    return 0;
+}
+
+Tipos de datos básicos
+int x_int = 0;          // Entero (normalmente 4 bytes)
+short x_short = 0;      // Entero corto (normalmente 2 bytes)
+char x_char = 0;        // Carácter (1 byte)
+char y_char = 'y';      // Carácter literal
+long x_long = 0;        // Entero largo (4-8 bytes)
+long long x_long_long = 0; // Entero de 64 bits
+float x_float = 0.0;    // Coma flotante de 32 bits
+double x_double = 0.0;  // Coma flotante de 64 bits
+
+Tipos sin signo
+unsigned char ux_char;
+unsigned short ux_short;
+unsigned int ux_int;
+unsigned long long ux_long_long;
+
+Operadores aritméticos
+i1 + i2;  // Suma
+i2 - i1;  // Resta
+i2 * i1;  // Multiplicación
+i1 / i2;  // División entera
+11 % 3;   // Módulo (resto)
+
+Operadores de comparación
+3 == 2;  // Igualdad (devuelve 0 o 1)
+3 != 2;  // Desigualdad
+3 > 2;   // Mayor que
+3 < 2;   // Menor que
+2 <= 2;  // Menor o igual que
+2 >= 2;  // Mayor o igual que
+
+Operadores lógicos
+!3;      // NOT lógico
+1 && 1;  // AND lógico
+0 || 1;  // OR lógico
+
+Operadores de bits
+~0x0F;   // Negación (NOT)
+0x0F & 0xF0; // AND
+0x0F | 0xF0; // OR
+0x04 ^ 0x0F; // XOR
+0x01 << 1;   // Desplazamiento izquierda
+0x02 >> 1;   // Desplazamiento derecha
+
+Estructuras de control
+if (condicion) {
+    // Código
+} else if (condicion) {
+    // Código
+} else {
+    // Código
+}
+
+while (condicion) {
+    // Código
+}
+
+do {
+    // Código
+} while (condicion);
+
+for (inicializacion; condicion; incremento) {
+    // Código
+}
+
+Punteros
+int x = 0;
+int* px = &x;  // px apunta a x
+printf("%d\n", *px); // Desreferencia: obtiene el valor de x
+(*px)++;  // Incrementa el valor apuntado
+
+Arreglos
+int x_array[20];  // Declaración
+x_array[0] = 1;   // Asignación
+int* x_ptr = x_array; // x_ptr apunta al primer elemento
+
+Funciones
+int add_two_ints(int x1, int x2) {
+    return x1 + x2;
+}
+
+Estructuras
+struct rectangle {
+    int width;
+    int height;
+};
+struct rectangle my_rec;
+my_rec.width = 10;
+my_rec.height = 20;
+
+### SINTAXIS DE FORTRAN
+Comentarios
+! Esto es un comentario
+
+Programa principal
+program example
+    implicit none
+    ! Declaraciones y código
+end program example
+
+Declaración de variables
+real :: v, x
+real :: a = 3, b = 2E12
+integer :: i, j, k = 1
+real, parameter :: PI = 3.14159265
+logical :: y = .TRUE., n = .FALSE.
+complex :: w = (0, 1)
+character(len=3) :: month
+
+Arreglos
+real :: array(6)
+real, dimension(4) :: arrayb
+integer :: arrayc(-10:10)
+real :: array2d(3, 2)
+
+Operadores de comparación
+==  .EQ.  Igual
+/=  .NE.  No igual
+<   .LT.  Menor que
+>   .GT.  Mayor que
+<=  .LE.  Menor o igual que
+>=  .GE.  Mayor o igual que
+
+Estructuras de control
+if (z == a) b = 4
+if (z /= a) then
+    b = 4
+else if (z .GT. a) then
+    b = 6
+else
+    b = 10
+end if
+
+select case (i)
+case (0, 1)
+    j = 0
+case (2:10)
+    j = 1
+case default
+    j = 3
+end select
+
+do i = 2, 10, 2
+    ! Código
+end do
+
+Funciones y subrutinas
+integer function func(a, b, c)
+    integer, intent(in) :: a, b, c
+    func = a + b + c
+end function func
+
+subroutine routine(d, e, f)
+    real, intent(inout) :: f
+    real, intent(in) :: d, e
+    f = 2*d + 3*e + f
+end subroutine routine
+
+Entrada/Salida
+print *, b
+print "(I6)", 320
+read (*, *) v
+read (*, "(2F6.2)") v, x
+
+### SINTAXIS DE PASCAL
+Comentarios
+// Esto es un comentario de una línea
+{ Esto es un comentario multilínea }
+
+Programa principal
+program learn_pascal;
+const
+    { Constantes }
+type
+    { Tipos de datos personalizados }
+var
+    { Variables }
+begin
+    { Instrucciones }
+end.
+
+Declaración de variables
+var a: integer;
+var b: integer;
+var a, b: integer;
+
+Tipos de datos
+Integer      // Entero de 16 bits [-32,768..32,767]
+Real         // Número real
+Boolean      // True/False
+Char         // Carácter (8 bits)
+String       // Cadena de caracteres
+String[50]   // Cadena con longitud máxima 50
+
+Tipos adicionales
+Byte         // [0..255]
+Shortint     // [-128..127]
+Smallint     // [-32,768..32,767]
+Word         // [0..65,535]
+Longint      // [-2,147,483,648..2,147,483,647]
+Cardinal     // Longword
+Int64        // 64-bit entero
+QWord        // 64-bit sin signo
+
+Asignación y operaciones
+int := 1;
+r := 3.14;
+ch := 'a';
+str := 'manzana';
+bool := true;
+int := 4 div 2;  // División entera
+r := 3 / 2;      // División real
+str := 'hola' + 'mundo'; // Concatenación
+
+Estructuras de control
+if condicion then
+    instruccion
+else
+    instruccion;
+
+for c := 0 to 9 do
+    instruccion;
+
+while condicion do
+    instruccion;
+
+repeat
+    instruccion;
+until condicion;
+
+Funciones y procedimientos
+function recursion_factorial(const a: integer): integer;
+begin
+    if a >= 1 then
+        recursion_factorial := a * recursion_factorial(a-1)
+    else
+        recursion_factorial := 1;
+end;
+
+procedure obtener_entero(var i: integer; dummy: integer);
+begin
+    write('Escriba un entero: ');
+    readln(i);
+end;
+
+### SINTAXIS DE ASSEMBLER (x86)
+Comentarios
+; Esto es un comentario en ensamblador
+
+Estructura básica
+section .data
+    ; Datos inicializados
+section .bss
+    ; Datos no inicializados
+section .text
+    global _start
+_start:
+    ; Código aquí
+
+Declaración de datos
+msg db 'Hola mundo', 0xa  ; Cadena con nueva línea
+len equ $ - msg           ; Longitud de la cadena
+num db 42                 ; Byte (8 bits)
+num2 dw 1234              ; Word (16 bits)
+num3 dd 123456            ; Double word (32 bits)
+
+Registros principales
+EAX, EBX, ECX, EDX  ; Registros de propósito general
+ESI, EDI            ; Registros de índice
+EBP, ESP            ; Base pointer y stack pointer
+EIP                 ; Instruction pointer
+
+Instrucciones básicas
+mov eax, 42         ; Mover valor a registro
+mov ebx, eax        ; Mover entre registros
+mov [num], eax      ; Mover a memoria
+add eax, 10         ; Sumar
+sub eax, 5          ; Restar
+inc eax             ; Incrementar
+dec eax             ; Decrementar
+mul ebx             ; Multiplicar (resultado en EDX:EAX)
+div ebx             ; Dividir (EAX / EBX)
+
+Instrucciones de comparación y salto
+cmp eax, ebx        ; Comparar
+je etiqueta         ; Saltar si igual
+jne etiqueta        ; Saltar si no igual
+jg etiqueta         ; Saltar si mayor
+jl etiqueta         ; Saltar si menor
+jge etiqueta        ; Saltar si mayor o igual
+jle etiqueta        ; Saltar si menor o igual
+jmp etiqueta        ; Salto incondicional
+
+Instrucciones de pila
+push eax            ; Apilar
+pop ebx             ; Desapilar
+call funcion        ; Llamar función
+ret                 ; Retornar de función
+
+Instrucciones lógicas
+and eax, ebx        ; AND
+or eax, ebx         ; OR
+xor eax, ebx        ; XOR
+not eax             ; NOT
+shl eax, 1          ; Desplazamiento izquierda
+shr eax, 1          ; Desplazamiento derecha
+
+Llamadas al sistema (Linux)
+mov eax, 1          ; sys_write
+mov ebx, 1          ; stdout
+mov ecx, msg        ; Mensaje
+mov edx, len        ; Longitud
+int 0x80            ; Interrupción
+
+mov eax, 60         ; sys_exit
+mov ebx, 0          ; Código de salida
+int 0x80            ; Interrupción
+
+Etiquetas y bucles
+inicio:
+    ; Código
+    loop inicio      ; Bucle (usa ECX como contador)
+
+Ejemplo completo (Hola Mundo)
+section .data
+    msg db 'Hola mundo', 0xa
+    len equ $ - msg
+section .text
+    global _start
+_start:
+    mov eax, 4       ; sys_write
+    mov ebx, 1       ; stdout
+    mov ecx, msg     ; Mensaje
+    mov edx, len     ; Longitud
+    int 0x80
+    mov eax, 1       ; sys_exit
+    mov ebx, 0       ; Código de salida
+    int 0x80
