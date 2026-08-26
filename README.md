@@ -8,10 +8,10 @@
 
 <br>
 
-![GitHub stars](https://img.shields.io/github/stars/USUARIO/REPOSITORIO?style=for-the-badge&logo=github&color=yellow)
-![GitHub forks](https://img.shields.io/github/forks/USUARIO/REPOSITORIO?style=for-the-badge&logo=github)
-![Contributors](https://img.shields.io/github/contributors/USUARIO/REPOSITORIO?style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/USUARIO/REPOSITORIO?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/savarwidell/qwerty?style=for-the-badge&logo=github&color=yellow)
+![GitHub forks](https://img.shields.io/github/forks/savarwidell/qwerty?style=for-the-badge&logo=github)
+![Contributors](https://img.shields.io/github/contributors/savarwidell/qwerty?style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/savarwidell/qwerty?style=for-the-badge)
 
 <br>
 
