@@ -50,7 +50,7 @@ La idea es sencilla:
 |---|---|---|
 | Valentín | Overtwach | Java |
 | Ale | LOL | Todo ALV |
-| Aldo | Agarrar chiles | psint |
+| Aldo | Agarrar chiles | MySql |
 | Nico | Juego 1234 | Java |
 | Verni | Lol | Proteus |
 
