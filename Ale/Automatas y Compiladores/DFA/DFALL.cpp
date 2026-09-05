@@ -2,70 +2,43 @@
 
 #include "DFALL.hpp"
 
-#include <array>
-#include <vector>
-#include <cstdint>
-#include <string>
-
-using u8 = std::uint8_t;
-
-static enum class StateType : u8
+dfa::binary::BinaryAutomaton::BinaryAutomaton(const std::vector<State>& inputStates)
 {
-	INIT = 0,
-	FINAL = 1,
-	DEAD = 2
-};
+    states.resize(inputStates.size());
 
-struct State 
-{
-	u8 id;
-	u8 stateType;
-	u8 if0;
-	u8 if1;
-};
+    for (const auto& state : inputStates)
+    {
+        states[state.id] = state;
 
-namespace dfa 
-{
-	class DFABinary 
-	{
-	private:
-		std::vector<State> states;
-		u8 initState;
-		u8 currentState;
-		std::vector<u8> finalStates;
-		
-	public:
-		std::string input;
-
-	public:
-		DFABinary(const std::vector<State>& inputStates, void* fnValidation)
-		{
-			u8 maxID{ 0 };
-			for (const auto& state : inputStates) if (state.id > maxID) maxID = state.id;
-			states.resize(maxID + 1);
-			for (const auto& state : inputStates) states[state.id] = state;
-			for (const auto& state : inputStates)
-			{
-				if (state.stateType == 0) initState = state.id;
-				break;
-			}
-			for (const auto& state : inputStates) if (state.stateType == 2) finalStates.push_back(state.id);
-			currentState = initState;
-		}
-		bool isValid(std::string input) 
-		{
-			u8 s;
-			for (const auto& c : input)
-			{
-				if (c != '0' || c != '1') return false;
-				if (c == '0') currentState = states[currentState].if0;
-				else if (c == '1') currentState = states[currentState].if1;
-				
-			}
-			
-		}
-
-	};
+        switch (state.type)
+        {
+        case StateType::INIT: initStateID = state.id; break;
+        case StateType::INITF: initStateID = state.id; finalStatesIDs.push_back(state.id); break;
+        case StateType::FIN: finalStatesIDs.push_back(state.id); break;
+        case StateType::DEADPOINT: deadStateID = state.id; break;
+        case StateType::INTER: break;
+        }
+    }
 }
 
-// std::array<int, 4> : pos (0), tipo (1), si1 (int), si0 (int)
+bool dfa::binary::BinaryAutomaton::isInputValid(std::string_view input)
+{
+    std::uint8_t currentStateID{ initStateID };
+    bool isValid{ false };
+
+    for (const auto& c : input)
+    {
+        if (currentStateID == deadStateID) break;
+        if (c == '0') { currentStateID = states[currentStateID].if0; continue; }
+        if (c == '1') { currentStateID = states[currentStateID].if1; continue; }
+
+        currentStateID = deadStateID;
+    }
+
+    for (std::uint8_t finalID : finalStatesIDs)
+    {
+        if (currentStateID == finalID) { isValid = true; break; }   
+    }
+
+    return isValid;
+}
