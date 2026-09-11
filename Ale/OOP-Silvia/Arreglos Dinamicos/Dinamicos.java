@@ -8,30 +8,26 @@ public class Dinamicos {
         ArrayList<Float> cantidades_dec = new ArrayList<>();
         ArrayList<String> descripcion = new ArrayList<>();
 
-        System.out.println("Descripcions guardadas:");
-
         descripcion.add("Mouse");
         descripcion.add("Teclado");
         descripcion.add("Laptop");
         descripcion.add("USB");
 
-        System.out.println("Cantidades enteras guardadas:");    
-
         cantidades.add(60);
         cantidades.add(30);
         cantidades.add(20);
 
-        System.out.println("Cantidades decimales guardadas:");
         cantidades_dec.add(10.5f);
         cantidades_dec.add(20.5f);
         cantidades_dec.add(30.5f);
 
+        System.out.println("Producto\tCantidad\tPrecio");
+
         for (int i = 0; i < cantidades.size(); i++) {
-            System.out.println("descripcion: " + descripcion.get(i) + " cantidad: " + cantidades.get(i));
-            System.out.println("cantidades decimales: " + cantidades_dec.get(i) + " cantidad decimal: " + cantidades_dec.get(i));
-            System.out.println("cantidades: " + cantidades.get(i) + " cantidad decimal: " + cantidades_dec.get(i));
-            suma
+            System.out.println(descripcion.get(i) + "\t\t" + cantidades.get(i) + "\t\t" + cantidades_dec.get(i));
+            suma_dec = suma_dec + cantidades_dec.get(i);
         }
 
+        System.out.println("El monto total de precios es de $" + suma_dec);
     }
 }
