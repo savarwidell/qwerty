@@ -1,70 +1,106 @@
+let trex, ground, groundInvisible;
+let trexImg, groundImg, cloudImg;
+let cloud, cloudsGroup;
+
+let obstacle, obstaclesGroup;
+let obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
+
+let gravedad = 0.6;
+let fuerzaSalto = -12;
+let sueloY = 180;
+
 function preload(){
-    // carga de imágenes al juego
-    trexImg = loadAnimation("trex1.png", "trex3.png", "trex4.png")
-    groundImg = loadImage("ground2.png")
-    // load obstacles:
-    obstacle1 = loadImage("")
+    trexImg = loadAnimation("trex1.png", "trex3.png", "trex4.png");
+    groundImg = loadImage("ground2.png");
+    cloudImg = loadImage("cloud.png");
+
+    obstacle1 = loadImage("obstacle1.png");
+    obstacle2 = loadImage("obstacle2.png");
+    obstacle3 = loadImage("obstacle3.png");
+    obstacle4 = loadImage("obstacle4.png");
+    obstacle5 = loadImage("obstacle5.png");
+    obstacle6 = loadImage("obstacle6.png");
 }
 
 function setup(){
-    // Definición de elementos
-    createCanvas(600, 400)
-    
-    trex = createSprite(60, 154, 20, 50)
-    trex.addAnimation("tmovimiento", trexImg)
-    trex.scale = 1.8
+    createCanvas(600, 400);
 
-    ground = createSprite(0, 214, 400, 10)
-    ground.addImage(groundImg)
+    trex = createSprite(60, sueloY, 20, 50);
+    trex.addAnimation("tmovimiento", trexImg);
+    trex.scale = 0.8;
 
-    invisibleGround = createSprite(0, 220, 400, 10)
-    invisibleGround.visible = false
+    ground = createSprite(0, 214, 400, 10);
+    ground.addImage(groundImg);
+
+    groundInvisible = createSprite(0, 205, 600, 10);
+    groundInvisible.visible = false;
+
+    cloudsGroup = new Group();
+    obstaclesGroup = new Group();
 }
 
 function draw(){
-    background("rgba(186, 70, 199, 0.54)")
+    background("rgb(250, 251, 251)");
 
-    ground.velocityX = -5
+    ground.velocityX = -5;
     if (ground.x < 0){
-        ground.x = ground.width / 2
-    }
-
-    // Saltar con la barra espaciadora
-    if (keyWentDown("space") && trex.y >= 0){
-        trex.velocityY = -12
+        ground.x = ground.width / 2;
     }
 
     // Gravedad
-    trex.velocityY = trex.velocityY + 0.8
+    trex.velocityY = trex.velocityY + gravedad;
 
-    // Colisión con el suelo invisible
-    trex.collide(invisibleGround)
+    // Salto fluido con 'ESPACIO' o 'FLECHA ARRIBA'
+    if ((keyDown('space') || keyDown(UP_ARROW)) && trex.y >= sueloY){
+        trex.velocityY = fuerzaSalto;
+    }
 
-    drawSprites()
+    // Detener al tocar el suelo
+    if (trex.y > sueloY){
+        trex.y = sueloY;
+        trex.velocityY = 0;
+    }
+
+    spawnClouds();
+    spawnObstacles();
+
+    drawSprites();
 }
 
-function obstacles(){
+function spawnClouds(){
+    if (frameCount % 70 === 0){
+        cloud = createSprite(600, 50, 40, 15);
+        cloud.y = Math.round(random(30, 80));
+        cloud.addImage(cloudImg);
+        cloud.scale = 0.8;
+        cloud.velocityX = -2;
+
+        cloud.depth = trex.depth;
+        trex.depth = trex.depth + 1;
+
+        cloudsGroup.add(cloud);
+    }
+}
+
+function spawnObstacles(){
     if (frameCount % 60 === 0){
-        var obstacle = createSprite(600, 190, 10, 40)
-        obstacle.velocityX = -6
+        obstacle = createSprite(600, 190, 10, 40);
+        obstacle.velocityX = -5;
 
-        ran=Math.round(random(1, 6))
-        switch(ran){
-            case 1: obstacle.addImage(obstacle1)
-                    break; 
-            case 2: obstacle.addImage(obstacle2)
-                    break;
-            case 3: obstacle.addImage(obstacle3)
-                    break;
-            case 4: obstacle.addImage(obstacle4)
-                    break;  
-            case 5: obstacle.addImage(obstacle5)
-                    break;
-            case 6: obstacle.addImage(obstacle6)
-                    break;
-            default: break
-
+        let rand = Math.round(random(1, 6));
+        switch(rand) {
+            case 1: obstacle.addImage(obstacle1); break;
+            case 2: obstacle.addImage(obstacle2); break;
+            case 3: obstacle.addImage(obstacle3); break;
+            case 4: obstacle.addImage(obstacle4); break;
+            case 5: obstacle.addImage(obstacle5); break;
+            case 6: obstacle.addImage(obstacle6); break;
+            default: break;
         }
-        obstacle.scale=0.5
+
+        obstacle.scale = 0.5;
+        obstacle.lifetime = 300;
+
+        obstaclesGroup.add(obstacle);
     }
 }
